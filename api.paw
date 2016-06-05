@@ -123,7 +123,7 @@
     </object>
     <object type="LMREQUEST" id="z114">
         <attribute name="uuid" type="string">9F89E342-B893-40B8-B8DE-4B2A64146B44</attribute>
-        <attribute name="url" type="string">http://localhost:8000/api/events</attribute>
+        <attribute name="url" type="string">http://localhost:3000/api/events</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -139,7 +139,7 @@
     </object>
     <object type="LMREQUEST" id="z115">
         <attribute name="uuid" type="string">EC132685-D42C-42F9-ABB5-3CE5606EE80D</attribute>
-        <attribute name="url" type="string">http://localhost:8000/api/events</attribute>
+        <attribute name="url" type="string">http://localhost:3000/api/events</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -194,7 +194,7 @@
     </object>
     <object type="LMREQUEST" id="z121">
         <attribute name="uuid" type="string">FC25C9E7-7771-4CE9-B7B5-8DEAA37AFA8E</attribute>
-        <attribute name="url" type="string">http://localhost:8000/api/events/56b67fc6f7e8186b0f000002</attribute>
+        <attribute name="url" type="string">http://localhost:3000/api/events/56b67fc6f7e8186b0f000002</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
@@ -242,7 +242,7 @@
     </object>
     <object type="LMREQUEST" id="z130">
         <attribute name="uuid" type="string">D85781E9-1DBD-4985-968D-D2121292B545</attribute>
-        <attribute name="url" type="string">http://localhost:8000/api/events/all</attribute>
+        <attribute name="url" type="string">http://localhost:3000/api/events/all</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
