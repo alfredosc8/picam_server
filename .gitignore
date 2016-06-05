@@ -1,0 +1,18 @@
+# OS X
+.DS_Store*
+Icon?
+._*
+
+# npm
+node_modules
+*.log
+*.gz
+
+# webstorm
+.idea
+
+# code generation
+/public/js/bundle.js
+
+#Media files
+data
