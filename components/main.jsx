@@ -14,7 +14,7 @@ ReactDOM.render(
                 <Menu />
             </div>
             <div className="col-md-10">
-                <EventList />
+                <EventList url="/api/events" pollInterval={2000} />
             </div>
         </div>
     </div>,
