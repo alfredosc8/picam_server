@@ -7,7 +7,7 @@ var Event = React.createClass({
                 <div className="message-item">
                     <div className="message-inner">
                         <div className="message-head clearfix">
-                            <div className="message-icon pull-left"><a href="#"><i class="glyphicon glyphicon-check"></i></a></div>
+                            <div className="message-icon pull-left"><a href="#"><i className="glyphicon glyphicon-check"></i></a></div>
                             <button type="button" className="btn btn-danger pull-right">Delete</button>
                             <div className="user-detail">
                                 <h5 className="handle"> <span>date here</span></h5>
@@ -15,20 +15,17 @@ var Event = React.createClass({
                                     <p>camera 1 - house</p>
                                 </div>
                                 <div className="post-time">
-                                    <p><i className="glyphicon glyphicon-time"></i> <span am-time-ago="selectedEvent.date"></span></p>
+                                    <p><i className="glyphicon glyphicon-time"></i> <span am-time-ago="event.date"></span></p>
                                 </div>
                             </div>
                         </div>
                         <div className="qa-message-content">
                             <div className="row">
-                                <div className="col-lg-12 col-centered"><img alt="" className="img-responsive preview-image"/></div>
+                                <div className="col-sm-4"><img ng-src="#" alt="" class="img-responsive preview-image"/></div>
+                                <div className="col-sm-4"><img ng-src="#" alt="" class="img-responsive preview-image"/></div>
+                                <div className="col-sm-4"><img ng-src="#" alt="" class="img-responsive preview-image"/></div>
                             </div>
-                            <div className="row">
-                                <div className="col-lg-12 col-centered"><img alt="" className="img-responsive preview-image"/></div>
-                            </div>
-                            <div  className="row">
-                                <div className="col-lg-12 col-centered"><img alt="" className="img-responsive preview-image"/></div>
-                            </div>
+                            <div className="row text-center"><a href="#">View 7 more...</a></div>
                         </div>
                     </div>
                 </div>
