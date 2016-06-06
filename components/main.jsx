@@ -2,6 +2,7 @@ import React from 'react'
 var ReactDOM = require('react-dom');
 var Banner = require('./Banner');
 var Menu = require('./Menu');
+var EventList = require('./EventList');
 
 ReactDOM.render(
     <div className="container">
@@ -12,7 +13,8 @@ ReactDOM.render(
             <div className="col-md-2">
                 <Menu />
             </div>
-            <div className="col-md-12">
+            <div className="col-md-10">
+                <EventList />
             </div>
         </div>
     </div>,
