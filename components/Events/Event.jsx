@@ -2,6 +2,9 @@ var React = require('react');
 var moment = require('moment');
 
 var Event = React.createClass({
+    handleDelete: function(e) {
+        this.props.onEventDelete(this.props._id);
+    },
     render: function() {
         return (
             <div className="row">
@@ -9,7 +12,7 @@ var Event = React.createClass({
                     <div className="message-inner">
                         <div className="message-head clearfix">
                             <div className="message-icon pull-left"><a href="#"><i className="glyphicon glyphicon-check"></i></a></div>
-                            <button type="button" className="btn btn-danger pull-right">Delete</button>
+                            <button onClick={this.handleDelete} className="btn btn-danger pull-right">Delete</button>
                             <div className="user-detail">
                                 <h5 className="handle">
                                     <span>{moment(this.props.date).format('LLL')}

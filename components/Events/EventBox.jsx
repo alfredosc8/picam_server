@@ -19,6 +19,18 @@ var EventBox = React.createClass({
             }.bind(this)
         });
     },
+    handleEventDelete: function(_id) {
+        $.ajax({
+            url: this.props.url + '/' + _id,
+            type: 'DELETE',
+            success: function(data) {
+                this.setState({data: data});
+            }.bind(this),
+            error: function(xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+            }.bind(this)
+        });
+    },
     componentDidMount: function() {
         this.loadEventsFromServer();
         setInterval(this.loadEventsFromServer, this.props.pollInterval);
@@ -26,7 +38,7 @@ var EventBox = React.createClass({
     render: function() {
         return (
             <div className="eventBox">
-                <EventList data={this.state.data} />
+                <EventList data={this.state.data} onEventDelete={this.handleEventDelete} />
             </div>
         )
     }
