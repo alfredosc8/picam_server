@@ -18,7 +18,8 @@
     "react": "~15.1.0",
     "react-dom": "~15.1.0",
     "mongoose": "~4.4.19",
-    "method-override": "2.3.6"
+    "method-override": "~2.3.6",
+    "moment": "~2.13.0"
   },
   "devDependencies": {
     "babel-core": "~6.9.1",

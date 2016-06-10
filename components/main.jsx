@@ -2,7 +2,7 @@ import React from 'react'
 var ReactDOM = require('react-dom');
 var Banner = require('./Banner');
 var Menu = require('./Menu');
-var EventList = require('./EventList');
+var EventBox = require('./Events/EventBox');
 
 ReactDOM.render(
     <div className="container">
@@ -14,7 +14,7 @@ ReactDOM.render(
                 <Menu />
             </div>
             <div className="col-md-10">
-                <EventList url="/api/events" pollInterval={2000} />
+                <EventBox url="/api/events" pollInterval={2000} />
             </div>
         </div>
     </div>,

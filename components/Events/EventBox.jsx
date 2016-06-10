@@ -1,7 +1,8 @@
 var React = require('react');
 var Event = require('./Event');
+var EventList = require('./EventList');
 
-var EventList = React.createClass({
+var EventBox = React.createClass({
     getInitialState: function() {
         return {data: []};
     },
@@ -24,9 +25,11 @@ var EventList = React.createClass({
     },
     render: function() {
         return (
-            <Event />
-        );
+            <div className="eventBox">
+                <EventList data={this.state.data} />
+            </div>
+        )
     }
 });
 
-module.exports = EventList;
+module.exports = EventBox;

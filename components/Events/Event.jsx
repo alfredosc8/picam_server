@@ -1,4 +1,5 @@
 var React = require('react');
+var moment = require('moment');
 
 var Event = React.createClass({
     render: function() {
@@ -10,12 +11,19 @@ var Event = React.createClass({
                             <div className="message-icon pull-left"><a href="#"><i className="glyphicon glyphicon-check"></i></a></div>
                             <button type="button" className="btn btn-danger pull-right">Delete</button>
                             <div className="user-detail">
-                                <h5 className="handle"> <span>date here</span></h5>
+                                <h5 className="handle">
+                                    <span>{moment(this.props.date).format('LLL')}
+                                    </span>
+                                </h5>
                                 <div className="post-type">
-                                    <p>camera 1 - house</p>
+                                    <p>{this.props.cameraName} - {this.props.cameraLocation}</p>
                                 </div>
                                 <div className="post-time">
-                                    <p><i className="glyphicon glyphicon-time"></i> <span am-time-ago="event.date"></span></p>
+                                    <p><i className="glyphicon glyphicon-time"></i>
+                                        <span>
+                                            {moment(this.props.date).fromNow()}
+                                        </span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
