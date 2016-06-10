@@ -6,7 +6,7 @@ var Event = React.createClass({
         this.props.onEventDelete(this.props._id);
     },
     render: function() {
-        var previewImages = []
+        var previewImages = [];
             this.props.images.filter((image, index) => {
             if(index < 3){
                 previewImages.push(<div className="col-sm-4" key={ image._id }>
@@ -19,7 +19,7 @@ var Event = React.createClass({
                 <div className="message-item">
                     <div className="message-inner">
                         <div className="message-head clearfix">
-                            <div className="message-icon pull-left"><a href="#"><i className="glyphicon glyphicon-check"></i></a></div>
+                            <div className="message-icon pull-left"><a href={ "/event/" + this.props._id }><i className="glyphicon glyphicon-check"></i></a></div>
                             <button onClick={this.handleDelete} className="btn btn-danger pull-right">Delete</button>
                             <div className="user-detail">
                                 <h5 className="handle">
@@ -42,7 +42,7 @@ var Event = React.createClass({
                             <div className="row">
                                 { previewImages }
                             </div>
-                            <div className="row text-center"><a href="#">View 7 more...</a></div>
+                            <div className="row text-center"><a href={ "/event/" + this.props._id }>View...</a></div>
                         </div>
                     </div>
                 </div>
