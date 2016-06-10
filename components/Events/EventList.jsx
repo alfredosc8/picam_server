@@ -6,7 +6,12 @@ var EventList = React.createClass({
         var onEventDelete = this.props.onEventDelete;
         var eventNodes = this.props.data.map(function(event) {
             return (
-                <Event key={event._id} _id={event._id} cameraName={event.cameraName} cameraLocation={event.cameraLocation} date={event.date} onEventDelete={onEventDelete} />
+                <Event key={event._id} _id={event._id}
+                       cameraName={event.cameraName}
+                       cameraLocation={event.cameraLocation}
+                       date={event.date}
+                       images={event.images}
+                       onEventDelete={onEventDelete} />
             );
         });
         return (

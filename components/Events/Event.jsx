@@ -1,11 +1,19 @@
 var React = require('react');
-var moment = require('moment');
+var Moment = require('moment');
 
 var Event = React.createClass({
     handleDelete: function(e) {
         this.props.onEventDelete(this.props._id);
     },
     render: function() {
+        var previewImages = []
+            this.props.images.filter((image, index) => {
+            if(index < 3){
+                previewImages.push(<div className="col-sm-4" key={ image._id }>
+                    <img src={ image.path } alt="" className="img-responsive preview-image"/>
+                </div>)
+            }});
+
         return (
             <div className="row">
                 <div className="message-item">
@@ -15,7 +23,7 @@ var Event = React.createClass({
                             <button onClick={this.handleDelete} className="btn btn-danger pull-right">Delete</button>
                             <div className="user-detail">
                                 <h5 className="handle">
-                                    <span>{moment(this.props.date).format('LLL')}
+                                    <span>{Moment(this.props.date).format('LLL')}
                                     </span>
                                 </h5>
                                 <div className="post-type">
@@ -24,7 +32,7 @@ var Event = React.createClass({
                                 <div className="post-time">
                                     <p><i className="glyphicon glyphicon-time"></i>
                                         <span>
-                                            {moment(this.props.date).fromNow()}
+                                            {Moment(this.props.date).fromNow()}
                                         </span>
                                     </p>
                                 </div>
@@ -32,9 +40,7 @@ var Event = React.createClass({
                         </div>
                         <div className="qa-message-content">
                             <div className="row">
-                                <div className="col-sm-4"><img ng-src="#" alt="" class="img-responsive preview-image"/></div>
-                                <div className="col-sm-4"><img ng-src="#" alt="" class="img-responsive preview-image"/></div>
-                                <div className="col-sm-4"><img ng-src="#" alt="" class="img-responsive preview-image"/></div>
+                                { previewImages }
                             </div>
                             <div className="row text-center"><a href="#">View 7 more...</a></div>
                         </div>
