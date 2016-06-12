@@ -14,6 +14,10 @@ var EventList = React.createClass({
                        onEventDelete={onEventDelete} />
             );
         });
+
+        if (eventNodes.length === 0) {
+            eventNodes = <div className="row no-events text-center">No Events</div>
+        }
         return (
             <div className="commentList">
                 {eventNodes}
