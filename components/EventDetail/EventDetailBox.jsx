@@ -19,6 +19,19 @@ var EventDetailBox = React.createClass({
             }.bind(this)
         });
     },
+    handleEventDelete: function(_id) {
+        $.ajax({
+            url: this.props.url + '/' + _id,
+            type: 'DELETE',
+            success: function(data) {
+                this.setState({data: data});
+                window.location = '/';
+            }.bind(this),
+            error: function(xhr, status, err) {
+                console.error(this.props.url, status, err.toString());
+            }.bind(this)
+        });
+    },
     getInitialState: function() {
         return {data: []};
     },
@@ -34,7 +47,7 @@ var EventDetailBox = React.createClass({
                    cameraLocation={event.cameraLocation}
                    date={event.date}
                    images={event.images}
-                   onEventDelete={[]} />
+                   onEventDelete={this.handleEventDelete} />
         );
     }
 });
