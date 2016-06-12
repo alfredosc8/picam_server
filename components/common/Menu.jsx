@@ -7,7 +7,7 @@ var Menu = React.createClass({
                 <div className="row">
                     <h3>Cameras</h3>
                     <ul>
-                        <li><i className="glyphicon glyphicon-camera"/>All</li>
+                        <li><a href="/"><i className="glyphicon glyphicon-camera"/>All</a></li>
                         <li><i className="glyphicon glyphicon-camera"/>PiCamera 1</li>
                     </ul>
                 </div>
