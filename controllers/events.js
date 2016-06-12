@@ -1,7 +1,11 @@
 var Event = require('../models/event');
 
 exports.list = function(req, res) {
-    returnLatestEventList(res);
+    if (req.query.page) {
+        returnPaginatedEventList(res, req.query.page);
+    } else {
+        returnLatestEventList(res);
+    }
 };
 
 exports.create = function(req, res) {
@@ -45,5 +49,14 @@ function returnLatestEventList(res) {
             res.send(err);
         }
         res.json(events);
+    });
+}
+
+function returnPaginatedEventList(res, pageNumber) {
+    Event.paginate({}, { page: pageNumber, limit: 10 }, function(err, result) {
+        if (err) {
+            res.send(err);
+        }
+        res.json(result);
     });
 }

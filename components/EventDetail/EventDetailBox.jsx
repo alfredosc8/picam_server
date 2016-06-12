@@ -40,7 +40,7 @@ var EventDetailBox = React.createClass({
     },
     render: function() {
         var event = this.state.data;
-        console.log(event._id)
+        console.log(event._id);
         return (
             <EventDetail key={event._id} _id={event._id}
                    cameraName={event.cameraName}
