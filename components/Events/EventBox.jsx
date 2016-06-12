@@ -3,6 +3,10 @@ var Event = require('./Event');
 var EventList = require('./EventList');
 
 var EventBox = React.createClass({
+    propTypes: {
+        url: React.PropTypes.string.isRequired,
+        pollInterval: React.PropTypes.number.isRequired
+    },
     getInitialState: function() {
         return {data: []};
     },

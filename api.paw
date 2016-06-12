@@ -164,7 +164,7 @@
     </object>
     <object type="LMREQUEST" id="z117">
         <attribute name="uuid" type="string">9DAE4AE4-87F9-425D-A0C9-DB86D6214C56</attribute>
-        <attribute name="url" type="string">http://localhost:8000/api/events/s</attribute>
+        <attribute name="url" type="string">http://localhost:3000/api/events/575cd88f92c0a18605286d62</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
