@@ -10,13 +10,14 @@ var EventBox = React.createClass({
     getInitialState: function() {
         return {data: []};
     },
-    loadEventsFromServer: function() {
+    loadEventsFromServer: function(pageNumber, callback) {
         $.ajax({
-            url: this.props.url,
+            url: this.props.url + "?page=" + pageNumber,
             dataType: 'json',
             cache: false,
             success: function(data) {
-                this.setState({data: data});
+                console.log(data.docs);
+                callback(data.docs, data.pages);
             }.bind(this),
             error: function(xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
@@ -35,14 +36,11 @@ var EventBox = React.createClass({
             }.bind(this)
         });
     },
-    componentDidMount: function() {
-        this.loadEventsFromServer();
-        setInterval(this.loadEventsFromServer, this.props.pollInterval);
-    },
+
     render: function() {
         return (
             <div className="eventBox">
-                <EventList data={this.state.data} onEventDelete={this.handleEventDelete} />
+                <EventList data={this.state.data} loadEvents={this.loadEventsFromServer} onEventDelete={this.handleEventDelete} />
             </div>
         )
     }
