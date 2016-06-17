@@ -1,5 +1,6 @@
 var React = require('react');
 var Event = require('./Event');
+var EventPager = require('./EventPager')
 
 var EventList = React.createClass({
     render: function() {
@@ -20,6 +21,7 @@ var EventList = React.createClass({
         }
         return (
             <div className="commentList">
+                <EventPager />
                 {eventNodes}
             </div>
         );
