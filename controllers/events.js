@@ -69,7 +69,7 @@ function returnDayEventList(res, queryDate) {
                 res.json({
                     events,
                     date: startOfDay
-=                });
+                });
             });
         } else {
             res.json({
