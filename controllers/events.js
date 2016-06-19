@@ -1,8 +1,9 @@
 var Event = require('../models/event');
+var Moment = require('moment');
 
 exports.list = function(req, res) {
-    if (req.query.page) {
-        returnPaginatedEventList(res, req.query.page);
+    if (req.query.day) {
+        returnDayEventList(res, Moment(req.query.day));
     } else {
         returnLatestEventList(res);
     }
@@ -52,11 +53,29 @@ function returnLatestEventList(res) {
     });
 }
 
-function returnPaginatedEventList(res, pageNumber) {
-    Event.paginate({}, { page: pageNumber, limit: 10 }, function(err, result) {
+function returnDayEventList(res, queryDate) {
+    Event.findOne({"date": {"$lt": queryDate}}, null, {sort: {date: -1}}, function(err, event) {
         if (err) {
             res.send(err);
         }
-        res.json(result);
+        if (event) {
+            var startOfDay = Moment(event.date).utc().startOf('day').toDate();
+            var endOfDay = Moment(event.date).utc().endOf('day').toDate();
+
+            Event.find({"date": {"$gte": startOfDay, "$lt": endOfDay}}, null, {sort: {date: -1}}, function (err, events) {
+                if (err) {
+                    res.send(err);
+                }
+                res.json({
+                    events,
+                    date: startOfDay
+=                });
+            });
+        } else {
+            res.json({
+                events: [],
+                date: queryDate
+            });
+        }
     });
 }
