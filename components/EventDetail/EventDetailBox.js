@@ -1,25 +1,21 @@
 var React = require('react');
-var Event = require('./Event');
-var EventList = require('./EventList');
+var EventDetail = require('./EventDetail');
 
-var EventBox = React.createClass({
+var EventDetailBox = React.createClass({
     propTypes: {
         url: React.PropTypes.string.isRequired,
-        pollInterval: React.PropTypes.number.isRequired
+        _id: React.PropTypes.string.isRequired
     },
-    getInitialState: function() {
-        return {data: []};
-    },
-    loadEventsFromServer: function() {
+    loadEventFromServer: function(id) {
         $.ajax({
-            url: this.props.url,
+            url: this.props.url + "/" + id,
             dataType: 'json',
             cache: false,
             success: function(data) {
                 this.setState({data: data});
             }.bind(this),
             error: function(xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
+                console.error(this.props.url + "/" + id, status, err.toString());
             }.bind(this)
         });
     },
@@ -29,23 +25,31 @@ var EventBox = React.createClass({
             type: 'DELETE',
             success: function(data) {
                 this.setState({data: data});
+                window.location = '/';
             }.bind(this),
             error: function(xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
             }.bind(this)
         });
     },
+    getInitialState: function() {
+        return {data: []};
+    },
     componentDidMount: function() {
-        this.loadEventsFromServer();
-        setInterval(this.loadEventsFromServer, this.props.pollInterval);
+        this.loadEventFromServer(this.props._id);
     },
     render: function() {
+        var event = this.state.data;
+        console.log(event._id);
         return (
-            <div className="eventBox">
-                <EventList data={this.state.data} onEventDelete={this.handleEventDelete} />
-            </div>
-        )
+            <EventDetail key={event._id} _id={event._id}
+                   cameraName={event.cameraName}
+                   cameraLocation={event.cameraLocation}
+                   date={event.date}
+                   images={event.images}
+                   onEventDelete={this.handleEventDelete} />
+        );
     }
 });
 
-module.exports = EventBox;
+module.exports = EventDetailBox;

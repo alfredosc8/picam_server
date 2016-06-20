@@ -1,6 +1,8 @@
 var Event = require('../models/event');
 var Moment = require('moment');
 
+
+
 exports.list = function(req, res) {
     if (req.query.day) {
         if (req.query.day === "latest") {
