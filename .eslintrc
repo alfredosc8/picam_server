@@ -10,8 +10,8 @@
   "parser": "babel-eslint",
   "rules": {
     "strict": ["error", "never"],
-    semi: ["error", "always"],
-    handle-callback-err: ["error", "^(err|error)"]
+    "semi": ["error", "always"],
+    "handle-callback-err": ["error", "^(err|error)"]
   },
   "plugins": [
     "react"
