@@ -2,10 +2,9 @@ var Event = require('../models/event');
 var Moment = require('moment');
 
 exports.list = function(req, res) {
-
     if (req.query.day) {
         if (req.query.day === "latest") {
-
+            returnLatestEventDayList(res);
         } else {
             returnDayEventList(res, Moment(req.query.day));
         }
@@ -58,35 +57,50 @@ function returnLatestEventList(res) {
     });
 }
 
+function returnLatestEventDayList(res) {
+    var currentDate = Moment();
+
+    Event.findOne({"date": {"$lt": currentDate}}, null, {sort: {date: -1}}, function(err, event) {
+        if (err) {
+            res.send(err);
+        }
+        if (event) {
+            returnDayEventList(res, Moment(event.date));
+        } else {
+            returnDayEventList(res, currentDate);
+        }
+    });
+}
+
 function returnDayEventList(res, queryDate) {
-    var startOfDay = Moment(queryDate).utc().startOf('day').toDate();
-    var endOfDay = Moment(queryDate).utc().endOf('day').toDate();
-    var previousEventDay = {};
-    var nextEventDay = {};
+    var startOfDay = Moment(queryDate).startOf('day').toDate();
+    var endOfDay = Moment(queryDate).endOf('day').toDate();
+    var previousEventDate = {};
+    var nextEventDate = {};
 
     Event.find({"date": { "$gte": startOfDay,  "$lt": endOfDay }}, null, {sort: {date: -1}}, function (err, events) {
         if (err) {
             res.send(err);
         }
-        Event.findOne({"date": {"$lt": startOfDay}}, null, {sort: {date: -1}}, function(err, event) {
+        Event.findOne({"date": {"$lt": startOfDay}}, null, {sort: {date: -1}}, function(err, previousDayEvent) {
             if (err) {
                 res.send(err);
             }
-            if (event) {
-                previousEventDay = Moment(event.date).utc().startOf('day').toDate();
+            if (previousDayEvent) {
+                previousEventDate = Moment(previousDayEvent.date).startOf('day').toDate();
             }
-            Event.findOne({"date": {"$gte": endOfDay}}, null, {sort: {date: -1}}, function (err, event) {
+            Event.findOne({"date": {"$gte": endOfDay}}, null, {sort: {date: 1}}, function (err, nextDayEvent) {
                 if (err) {
                     res.send(err);
                 }
-                if (event) {
-                    nextEventDay = Moment(event.date).utc().startOf('day').toDate();
+                if (nextDayEvent) {
+                    nextEventDate = Moment(nextDayEvent.date).startOf('day').toDate();
                 }
                 res.json({
                     events,
                     date: startOfDay,
-                    nextEventDay: nextEventDay,
-                    previousEventDay: previousEventDay
+                    nextEventDate: nextEventDate,
+                    previousEventDate: previousEventDate
                 });
             });
         });
