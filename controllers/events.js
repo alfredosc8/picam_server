@@ -24,7 +24,7 @@ exports.create = function(req, res) {
             if (err) {
                 res.send(err);
             }
-            returnLatestEventList(res);
+            res.sendStatus(200);
         });
 };
 
@@ -44,7 +44,7 @@ exports.delete = function(req, res) {
         if (err) {
             res.send(err);
         }
-        returnLatestEventList(res);
+        res.sendStatus(200);
     });
 };
 
