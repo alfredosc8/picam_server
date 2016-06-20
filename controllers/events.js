@@ -2,8 +2,13 @@ var Event = require('../models/event');
 var Moment = require('moment');
 
 exports.list = function(req, res) {
+
     if (req.query.day) {
-        returnDayEventList(res, Moment(req.query.day));
+        if (req.query.day === "latest") {
+
+        } else {
+            returnDayEventList(res, Moment(req.query.day));
+        }
     } else {
         returnLatestEventList(res);
     }
@@ -54,28 +59,36 @@ function returnLatestEventList(res) {
 }
 
 function returnDayEventList(res, queryDate) {
-    Event.findOne({"date": {"$lt": queryDate}}, null, {sort: {date: -1}}, function(err, event) {
+    var startOfDay = Moment(queryDate).utc().startOf('day').toDate();
+    var endOfDay = Moment(queryDate).utc().endOf('day').toDate();
+    var previousEventDay = {};
+    var nextEventDay = {};
+
+    Event.find({"date": { "$gte": startOfDay,  "$lt": endOfDay }}, null, {sort: {date: -1}}, function (err, events) {
         if (err) {
             res.send(err);
         }
-        if (event) {
-            var startOfDay = Moment(event.date).utc().startOf('day').toDate();
-            var endOfDay = Moment(event.date).utc().endOf('day').toDate();
-
-            Event.find({"date": {"$gte": startOfDay, "$lt": endOfDay}}, null, {sort: {date: -1}}, function (err, events) {
+        Event.findOne({"date": {"$lt": startOfDay}}, null, {sort: {date: -1}}, function(err, event) {
+            if (err) {
+                res.send(err);
+            }
+            if (event) {
+                previousEventDay = Moment(event.date).utc().startOf('day').toDate();
+            }
+            Event.findOne({"date": {"$gte": endOfDay}}, null, {sort: {date: -1}}, function (err, event) {
                 if (err) {
                     res.send(err);
                 }
+                if (event) {
+                    nextEventDay = Moment(event.date).utc().startOf('day').toDate();
+                }
                 res.json({
                     events,
-                    date: startOfDay
+                    date: startOfDay,
+                    nextEventDay: nextEventDay,
+                    previousEventDay: previousEventDay
                 });
             });
-        } else {
-            res.json({
-                events: [],
-                date: queryDate
-            });
-        }
+        });
     });
 }
