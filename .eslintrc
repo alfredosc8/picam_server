@@ -9,9 +9,9 @@
   },
   "parser": "babel-eslint",
   "rules": {
-    "strict": [2, "never"],
+    "strict": ["error", "never"],
     semi: ["error", "always"],
-    handle-callback-err: [2, "^(err|error)"]
+    handle-callback-err: ["error", "^(err|error)"]
   },
   "plugins": [
     "react"
