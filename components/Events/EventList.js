@@ -7,9 +7,9 @@ var EventList = React.createClass({
         onEventDelete: React.PropTypes.func,
         _id: React.PropTypes.number,
         events: React.PropTypes.array,
-        nextUrl: React.PropTypes.String,
-        prevUrl: React.PropTypes.String,
-        date: React.propTypes.String
+        nextUrl: React.PropTypes.string,
+        prevUrl: React.PropTypes.string,
+        date: React.PropTypes.string
     },
     render: function() {
         var onEventDelete = this.props.onEventDelete;

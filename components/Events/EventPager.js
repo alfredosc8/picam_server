@@ -3,9 +3,9 @@ var Moment = require('moment');
 
 var EventPager = React.createClass({
     propTypes: {
-        nextUrl: React.PropTypes.String,
-        prevUrl: React.PropTypes.String,
-        date: React.propTypes.String
+        nextUrl: React.PropTypes.string,
+        prevUrl: React.PropTypes.string,
+        date: React.PropTypes.string
     },
     render: function() {
         let nextClass = this.props.nextUrl ? 'next' : 'next disabled';
