@@ -4,13 +4,13 @@ var EventPager = require('./EventPager');
 
 var EventList = React.createClass({
     propTypes: {
-        onEventDelete: React.PropTypes.func.isRequired,
-        _id: React.PropTypes.number.isRequired,
-        data: React.PropTypes.array.isRequired
+        onEventDelete: React.PropTypes.func,
+        _id: React.PropTypes.number,
+        events: React.PropTypes.array
     },
     render: function() {
         var onEventDelete = this.props.onEventDelete;
-        var eventNodes = this.props.data.map(function(event) {
+        var eventNodes = this.props.events.map(function(event) {
             return (
                 <Event key={event._id} _id={event._id}
                        cameraName={event.cameraName}
@@ -26,7 +26,7 @@ var EventList = React.createClass({
         }
         return (
             <div className="commentList">
-                <EventPager />
+                <EventPager date={this.props.date} />
                 {eventNodes}
             </div>
         );

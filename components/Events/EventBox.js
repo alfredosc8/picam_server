@@ -8,15 +8,32 @@ var EventBox = React.createClass({
         pollInterval: React.PropTypes.number.isRequired
     },
     getInitialState: function() {
-        return {data: []};
+        return {
+            events: [],
+            date: 'Latest'
+        };
+    },
+    getURL: function () {
+        var url = this.props.url;
+        if (!this.props.params === undefined) {
+            if (!this.props.params.day === undefined) {
+                return url += '?day=' + this.props.params.day;
+            }
+        }
+        return url += '?day=latest';
     },
     loadEventsFromServer: function() {
+        var url = this.getURL();
+
         $.ajax({
-            url: this.props.url,
+            url: url,
             dataType: 'json',
             cache: false,
             success: function(data) {
-                this.setState({data: data});
+                this.setState({
+                    events: data.events,
+                    date: data.date
+                });
             }.bind(this),
             error: function(xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
@@ -37,12 +54,12 @@ var EventBox = React.createClass({
     },
     componentDidMount: function() {
         this.loadEventsFromServer();
-        setInterval(this.loadEventsFromServer, this.props.pollInterval);
+        //setInterval(this.loadEventsFromServer, this.props.pollInterval);
     },
     render: function() {
         return (
             <div className="eventBox">
-                <EventList data={this.state.data} onEventDelete={this.handleEventDelete} />
+                <EventList events={this.state.events} date = {this.state.date} onEventDelete={this.handleEventDelete} />
             </div>
         );
     }

@@ -4,9 +4,9 @@ var Moment = require('moment');
 var Event = React.createClass({
     propTypes: {
         onEventDelete: React.PropTypes.func.isRequired,
-        _id: React.PropTypes.number.isRequired,
+        _id: React.PropTypes.string.isRequired,
         images: React.PropTypes.array.isRequired,
-        date: React.PropTypes.object.isRequired,
+        date: React.PropTypes.string.isRequired,
         cameraName: React.PropTypes.string.isRequired,
         cameraLocation: React.PropTypes.string.isRequired
     },
