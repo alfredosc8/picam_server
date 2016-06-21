@@ -14,9 +14,6 @@ var EventDetailBox = React.createClass({
             cache: false,
             success: function(data) {
                 this.setState({data: data});
-            }.bind(this),
-            error: function(xhr, status, err) {
-                console.error(this.props.url + '/' + id, status, err.toString());
             }.bind(this)
         });
     },
@@ -27,9 +24,6 @@ var EventDetailBox = React.createClass({
             success: function(data) {
                 this.setState({data: data});
                 window.location = '/';
-            }.bind(this),
-            error: function(xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
             }.bind(this)
         });
     },

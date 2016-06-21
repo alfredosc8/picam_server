@@ -5,7 +5,9 @@ var EventList = require('./EventList');
 
 var EventBox = React.createClass({
     propTypes: {
-        pollInterval: React.PropTypes.number.isRequired
+        apiUrl: React.PropTypes.string.isRequired,
+        pollInterval: React.PropTypes.number.isRequired,
+        location: React.PropTypes.object
     },
     getInitialState: function() {
         return {
@@ -44,9 +46,6 @@ var EventBox = React.createClass({
                     prevUrl: this.getNextDayLink(data.previousEventDate),
                     nextUrl: this.getNextDayLink(data.nextEventDate)
                 });
-            }.bind(this),
-            error: function(xhr, status, err) {
-                console.error(this.props.apiUrl, status, err.toString());
             }.bind(this)
         });
     },
@@ -56,9 +55,6 @@ var EventBox = React.createClass({
             type: 'DELETE',
             success: function(data) {
                 this.setState({data: data});
-            }.bind(this),
-            error: function(xhr, status, err) {
-                console.error(this.props.apiUrl, status, err.toString());
             }.bind(this)
         });
     },

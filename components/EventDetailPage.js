@@ -14,6 +14,9 @@ const MenuPanel = React.createClass({
 });
 
 const EventDetailPanel = React.createClass({
+    propTypes: {
+        params: React.PropTypes.object
+    },
     render() {
         return (
             <div className="col-md-10">
@@ -24,6 +27,9 @@ const EventDetailPanel = React.createClass({
 });
 
 const EventDetailPage = React.createClass({
+    propTypes: {
+        params: React.PropTypes.object
+    },
     render() {
         return (
             <div className="container">
