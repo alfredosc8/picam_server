@@ -31,7 +31,7 @@ var Event = React.createClass({
                             <button onClick={this.handleDelete} className="btn btn-danger pull-right">Delete</button>
                             <div className="user-detail">
                                 <h5 className="handle">
-                                    <span>{Moment(this.props.date).format('LLL')}
+                                    <span>{Moment(this.props.date).format('h:mm A')}
                                     </span>
                                 </h5>
                                 <div className="post-type">

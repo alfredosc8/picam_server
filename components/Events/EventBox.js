@@ -59,7 +59,7 @@ var EventBox = React.createClass({
     render: function() {
         return (
             <div className="eventBox">
-                <EventList events={this.state.events} date = {this.state.date} onEventDelete={this.handleEventDelete} />
+                <EventList events={this.state.events} date={this.state.date} onEventDelete={this.handleEventDelete} />
             </div>
         );
     }

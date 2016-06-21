@@ -78,7 +78,7 @@ function returnDayEventList(res, queryDate) {
     var previousEventDate = {};
     var nextEventDate = {};
 
-    Event.find({'date': { '$gte': startOfDay,  '$lt': endOfDay }}, null, {sort: {date: -1}}, function (err, events) {
+    Event.find({'date': { '$gte': startOfDay,  '$lt': endOfDay }}, null, {sort: {date: 1}}, function (err, events) {
         if (err) {
             res.send(err);
         }
