@@ -75,8 +75,8 @@ function returnLatestEventDayList(res) {
 function returnDayEventList(res, queryDate) {
     var startOfDay = Moment(queryDate).startOf('day').toDate();
     var endOfDay = Moment(queryDate).endOf('day').toDate();
-    var previousEventDate = {};
-    var nextEventDate = {};
+    var previousEventDate = null;
+    var nextEventDate = null;
 
     Event.find({'date': { '$gte': startOfDay,  '$lt': endOfDay }}, null, {sort: {date: 1}}, function (err, events) {
         if (err) {

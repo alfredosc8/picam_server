@@ -317,7 +317,7 @@
     </object>
     <object type="LMREQUEST" id="z136">
         <attribute name="uuid" type="string">EAA00C42-6186-4B69-95C1-3B29193504A3</attribute>
-        <attribute name="url" type="string">http://localhost:3000/api/events?day=latest</attribute>
+        <attribute name="url" type="string">http://localhost:3000/api/events?day=2016-06-19</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>

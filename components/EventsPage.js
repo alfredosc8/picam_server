@@ -17,7 +17,7 @@ const EventsPanel = React.createClass({
     render() {
         return (
             <div className="col-md-10">
-                <EventBox url="/api/events" pollInterval={2000} />
+                <EventBox apiUrl="/api/events" pollInterval={2000} location={this.props.location} />
             </div>
         );
     }
@@ -32,7 +32,7 @@ const EventsPage = React.createClass({
                 </div>
                 <div className="row">
                     <MenuPanel />
-                    <EventsPanel />
+                    <EventsPanel location={this.props.location} />
                 </div>
             </div>
         );

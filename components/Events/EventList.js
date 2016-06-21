@@ -26,7 +26,10 @@ var EventList = React.createClass({
         }
         return (
             <div className="commentList">
-                <EventPager date={this.props.date} />
+                <EventPager date={this.props.date}
+                            nextUrl={this.props.nextUrl}
+                            prevUrl={this.props.prevUrl}
+                />
                 {eventNodes}
             </div>
         );

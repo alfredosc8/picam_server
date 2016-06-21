@@ -7,6 +7,7 @@ var EventDetailPage = require('./EventDetailPage');
 ReactDOM.render((
     <Router history={browserHistory}>
         <Route path="/" component={EventsPage}/>
+        <Route path="events/" component={EventsPage}/>
         <Route path="event/:eventId" component={EventDetailPage}/>
         <Route path="*" component={EventsPage}/>
     </Router>
