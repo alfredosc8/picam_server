@@ -9,7 +9,7 @@ const MenuPanel = React.createClass({
             <div className="col-md-2">
                 <Menu />
             </div>
-        )
+        );
     }
 });
 
@@ -19,7 +19,7 @@ const EventsPanel = React.createClass({
             <div className="col-md-10">
                 <EventBox url="/api/events" pollInterval={2000} />
             </div>
-        )
+        );
     }
 });
 
@@ -35,7 +35,7 @@ const EventsPage = React.createClass({
                     <EventsPanel />
                 </div>
             </div>
-        )
+        );
     }
 });
 

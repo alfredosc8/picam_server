@@ -7,7 +7,7 @@ router.use('/api', api);
 
 // All other routing via React-Router
 router.get('*', function (request, response) {
-    response.sendFile(path.join(__dirname, '../public', 'index.html'))
+    response.sendFile(path.join(__dirname, '../public', 'index.html'));
 });
 
 module.exports = router;

@@ -10,6 +10,7 @@
   "parser": "babel-eslint",
   "rules": {
     "strict": ["error", "never"],
+    "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "handle-callback-err": ["error", "^(err|error)"]
   },

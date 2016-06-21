@@ -1,8 +1,13 @@
 var React = require('react');
 var Event = require('./Event');
-var EventPager = require('./EventPager')
+var EventPager = require('./EventPager');
 
 var EventList = React.createClass({
+    propTypes: {
+        onEventDelete: React.PropTypes.func.isRequired,
+        _id: React.PropTypes.number.isRequired,
+        data: React.PropTypes.array.isRequired
+    },
     render: function() {
         var onEventDelete = this.props.onEventDelete;
         var eventNodes = this.props.data.map(function(event) {
@@ -17,7 +22,7 @@ var EventList = React.createClass({
         });
 
         if (eventNodes.length === 0) {
-            eventNodes = <div className="row no-events text-center">No Events</div>
+            eventNodes = <div className="row no-events text-center">No Events</div>;
         }
         return (
             <div className="commentList">

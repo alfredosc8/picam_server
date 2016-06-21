@@ -1,3 +1,4 @@
+import $ from 'jquery';
 var React = require('react');
 var EventList = require('./EventList');
 
@@ -43,7 +44,7 @@ var EventBox = React.createClass({
             <div className="eventBox">
                 <EventList data={this.state.data} onEventDelete={this.handleEventDelete} />
             </div>
-        )
+        );
     }
 });
 

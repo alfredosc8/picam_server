@@ -2,9 +2,9 @@ var React = require('react');
 
 var EventPager = React.createClass({
     render: function() {
-        let nextClass = this.props.nextCallback ? "next" : "next disabled";
-        let previousClass = this.props.previousCallback ? "previous" : "previous disabled";
-        let title = this.props.title ? this.props.title : "Latest";
+        let nextClass = this.props.nextCallback ? 'next' : 'next disabled';
+        let previousClass = this.props.previousCallback ? 'previous' : 'previous disabled';
+        let title = this.props.title ? this.props.title : 'Latest';
         return (
             <div className="row event-pager">
                 <ul className="pager">

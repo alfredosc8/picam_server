@@ -9,7 +9,7 @@ const MenuPanel = React.createClass({
             <div className="col-md-2">
                 <Menu />
             </div>
-        )
+        );
     }
 });
 
@@ -19,7 +19,7 @@ const EventDetailPanel = React.createClass({
             <div className="col-md-10">
                 <EventDetailBox url="/api/events" _id={this.props.params.eventId} />
             </div>
-        )
+        );
     }
 });
 
@@ -35,7 +35,7 @@ const EventDetailPage = React.createClass({
                     <EventDetailPanel params={this.props.params} />
                 </div>
             </div>
-        )
+        );
     }
 });
 

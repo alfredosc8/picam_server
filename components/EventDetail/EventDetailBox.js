@@ -1,5 +1,6 @@
 var React = require('react');
 var EventDetail = require('./EventDetail');
+import $ from 'jquery';
 
 var EventDetailBox = React.createClass({
     propTypes: {
@@ -8,14 +9,14 @@ var EventDetailBox = React.createClass({
     },
     loadEventFromServer: function(id) {
         $.ajax({
-            url: this.props.url + "/" + id,
+            url: this.props.url + '/' + id,
             dataType: 'json',
             cache: false,
             success: function(data) {
                 this.setState({data: data});
             }.bind(this),
             error: function(xhr, status, err) {
-                console.error(this.props.url + "/" + id, status, err.toString());
+                console.error(this.props.url + '/' + id, status, err.toString());
             }.bind(this)
         });
     },
@@ -40,7 +41,6 @@ var EventDetailBox = React.createClass({
     },
     render: function() {
         var event = this.state.data;
-        console.log(event._id);
         return (
             <EventDetail key={event._id} _id={event._id}
                    cameraName={event.cameraName}
