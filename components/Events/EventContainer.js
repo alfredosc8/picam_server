@@ -53,8 +53,11 @@ var EventBox = React.createClass({
         $.ajax({
             url: this.props.apiUrl + '/' + _id,
             type: 'DELETE',
-            success: function(data) {
-                this.setState({data: data});
+            success: function() {
+                var events = this.state.events.filter(function(event) {
+                    return event._id != _id;
+                });
+                this.setState({ events: events });
             }.bind(this)
         });
     },
