@@ -43,8 +43,9 @@ exports.delete = function(req, res) {
     Event.remove(query, function (err) {
         if (err) {
             res.send(err);
+        } else {
+            res.sendStatus(200);
         }
-        res.sendStatus(200);
     });
 };
 

@@ -1,7 +1,7 @@
 var React = require('react');
 var Banner = require('./Common/Banner');
 var Menu = require('./Common/Menu');
-var EventBox = require('./Events/EventBox');
+var EventBox = require('./Events/EventContainer');
 
 const MenuPanel = React.createClass({
     render() {
