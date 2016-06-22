@@ -1,0 +1,18 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+     - "3000:3000"
+    environment:
+      PORT: 3000
+      MONGO_DB: "mongodb://db/cameraserver"
+    depends_on:
+     - db
+  db:
+    image: mongo
+    ports:
+     - "27017:27017"
+    volumes:
+      - ./data:/data/db
+    command: "--smallfiles --logpath=/dev/null"

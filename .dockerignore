@@ -1,0 +1,29 @@
+# git
+.git
+.gitignore
+
+# OS X
+.DS_Store*
+Icon?
+._*
+
+# npm
+node_modules
+*.log
+*.gz
+
+# webstorm
+.idea
+
+# eslint
+.eslintrc
+
+# paw
+api.paw
+
+# code generation
+/public/js/bundle.js
+/public/images
+
+# Media files
+data
