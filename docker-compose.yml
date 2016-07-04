@@ -4,6 +4,8 @@ services:
     build: .
     ports:
      - "3000:3000"
+    volumes:
+     - ./public/images:/usr/src/app/public/images
     environment:
       PORT: 3000
       MONGO_DB: "mongodb://db/cameraserver"
