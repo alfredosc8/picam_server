@@ -19,7 +19,7 @@ var EventList = React.createClass({
                        cameraName={event.cameraName}
                        cameraLocation={event.cameraLocation}
                        date={event.date}
-                       images={event.images}
+                       previewImage={event.previewImage}
                        onEventDelete={onEventDelete} />
             );
         });

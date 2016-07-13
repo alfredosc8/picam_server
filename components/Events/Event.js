@@ -5,7 +5,7 @@ var Event = React.createClass({
     propTypes: {
         onEventDelete: React.PropTypes.func.isRequired,
         _id: React.PropTypes.string.isRequired,
-        images: React.PropTypes.array.isRequired,
+        previewImage: React.PropTypes.string.isRequired,
         date: React.PropTypes.string.isRequired,
         cameraName: React.PropTypes.string.isRequired,
         cameraLocation: React.PropTypes.string.isRequired
@@ -14,14 +14,6 @@ var Event = React.createClass({
         this.props.onEventDelete(this.props._id);
     },
     render: function() {
-        var previewImages = [];
-            this.props.images.filter((image, index) => {
-            if(index < 3){
-                previewImages.push(<div className="col-sm-4" key={ image._id }>
-                    <img src={ image.path } alt="" className="img-responsive preview-image"/>
-                </div>);
-            }});
-
         return (
             <div className="row">
                 <div className="message-item">
@@ -48,7 +40,9 @@ var Event = React.createClass({
                         </div>
                         <div className="qa-message-content">
                             <div className="row">
-                                { previewImages }
+                              <div className="col-sm-4">
+                                  <img src={ '/uploads/' + this.props.previewImage } alt="" className="img-responsive preview-image"/>
+                                  </div>
                             </div>
                             <div className="row text-center"><a href={ '/event/' + this.props._id }>View...</a></div>
                         </div>

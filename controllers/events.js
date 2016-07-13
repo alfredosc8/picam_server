@@ -14,7 +14,10 @@ exports.list = function(req, res) {
 };
 
 exports.create = function(req, res) {
-    if (req.body.cameraName &&  req.body.cameraLocation && req.files['video'] && req.files['previewImage']) {
+    if (req.body.cameraName &&
+        req.body.cameraLocation &&
+        req.files['video'] &&
+        req.files['previewImage']) {
         Event.create({
                 cameraName: req.body.cameraName,
                 cameraLocation: req.body.cameraLocation,
