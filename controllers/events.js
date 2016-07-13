@@ -22,11 +22,10 @@ exports.create = function(req, res) {
                 video: req.files['video'][0].filename,
                 previewImage: req.files['previewImage'][0].filename
             },
-            function (err, event) {
+            function (err) {
                 if (err) {
                     res.send(err);
                 }
-                console.log(event);
                 res.sendStatus(200);
             });
     } else {
