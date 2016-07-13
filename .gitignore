@@ -14,6 +14,7 @@ node_modules
 # code generation
 /public/js/bundle.js
 /public/images
+/public/uploads/*
 
 #Media files
 data
