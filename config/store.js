@@ -6,7 +6,7 @@ var storage =   multer.diskStorage({
     callback(null, path.join(__dirname, '../public/uploads'));
   },
   filename: function (req, file, callback) {
-    var ext = file.fieldname === 'previewImage' ? '.jpg' : '.mov';
+    var ext = file.fieldname === 'previewImage' ? '.jpg' : '.mp4';
     callback(null, file.fieldname + '-' + Date.now() + ext);
   }
 });
