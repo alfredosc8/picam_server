@@ -8,6 +8,17 @@ var EventDetailBox = React.createClass({
         url: React.PropTypes.string.isRequired,
         _id: React.PropTypes.string.isRequired
     },
+    getInitialState: function() {
+        return {
+            event: {
+                cameraName: '',
+                cameraLocation: '',
+                date: '',
+                video: '',
+                onEventDelete: {}
+            }
+        };
+    },
     loadEventFromServer: function(id) {
         $.ajax({
             url: this.props.url + '/' + id,
@@ -31,9 +42,6 @@ var EventDetailBox = React.createClass({
             }.bind(this)
         });
     },
-    getInitialState: function() {
-        return {event: []};
-    },
     componentDidMount: function() {
         this.loadEventFromServer(this.props._id);
     },
@@ -43,7 +51,7 @@ var EventDetailBox = React.createClass({
                    cameraName={this.state.event.cameraName}
                    cameraLocation={this.state.event.cameraLocation}
                    date={this.state.event.date}
-                   images={this.state.event.images}
+                   video={this.state.event.video}
                    onEventDelete={this.handleEventDelete} />
         );
     }

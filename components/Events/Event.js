@@ -40,8 +40,8 @@ var Event = React.createClass({
                         </div>
                         <div className="qa-message-content">
                             <div className="row">
-                              <div className="col-sm-4">
-                                  <img src={ '/uploads/' + this.props.previewImage } alt="" className="img-responsive preview-image"/>
+                              <div className="col-sm-12">
+                                  <img src={ '/uploads/' + this.props.previewImage } alt="" className="img-responsive preview-image text-center" />
                                   </div>
                             </div>
                             <div className="row text-center"><a href={ '/event/' + this.props._id }>View...</a></div>

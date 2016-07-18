@@ -4,9 +4,9 @@ var Moment = require('moment');
 var EventDetail = React.createClass({
     propTypes: {
         onEventDelete: React.PropTypes.func.isRequired,
-        _id: React.PropTypes.number.isRequired,
-        images: React.PropTypes.array.isRequired,
-        date: React.PropTypes.object.isRequired,
+        _id: React.PropTypes.string.isRequired,
+        video: React.PropTypes.string.isRequired,
+        date: React.PropTypes.string.isRequired,
         cameraName: React.PropTypes.string.isRequired,
         cameraLocation: React.PropTypes.string.isRequired
     },
@@ -14,14 +14,6 @@ var EventDetail = React.createClass({
         this.props.onEventDelete(this.props._id);
     },
     render: function() {
-        var images = [];
-        if (this.props.images) {
-            this.props.images.filter((image) => {
-                images.push(<div className="col-lg-12 col-centered" key={ image._id }>
-                    <img src={ image.path } alt="" className="img-responsive preview-image"/>
-                </div>);
-            });
-        }
         return (
             <div className="row">
                 <div className="message-item">
@@ -48,7 +40,13 @@ var EventDetail = React.createClass({
                         </div>
                         <div className="qa-message-content">
                             <div className="row">
-                                { images }
+                                <div className="col-sm-12">
+                                    <div>
+                                        <video width="100%" controls>
+                                        <source src={ '/uploads/' + this.props.video } type="video/mp4"/>
+                                        </video>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
