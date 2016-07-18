@@ -27,7 +27,7 @@ class Handler(FileSystemEventHandler):
 
         elif event.event_type == 'deleted':
             if event.src_path.lower().endswith(('.h264')):
-                video_path = event.src_path[:-len('.h264')] + '.mp4'
+                video_path = event.src_path[:-len('.h264')]
                 preview_image_path = glob.glob(video_path + '.*.jpg')[0]
 
                 if os.path.isfile(video_path) and os.path.isfile(preview_image_path):
