@@ -7,7 +7,8 @@ var eventSchema = new Schema({
     cameraName: String,
     cameraLocation: String,
     date: { type: Date, default: Date.now },
-    images: [{ name: String, path: String, date: Date }]
+    previewImage: String,
+    video: String
 });
 
 eventSchema.plugin(mongoosePaginate);

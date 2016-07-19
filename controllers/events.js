@@ -14,18 +14,26 @@ exports.list = function(req, res) {
 };
 
 exports.create = function(req, res) {
-    Event.create({
-            cameraName: req.body.cameraName,
-            cameraLocation: req.body.cameraLocation,
-            date: req.body.date,
-            images: req.body.images
-        },
-        function(err) {
-            if (err) {
-                res.send(err);
-            }
-            res.sendStatus(200);
-        });
+    if (req.body.cameraName &&
+        req.body.cameraLocation &&
+        req.files['video'] &&
+        req.files['previewImage']) {
+        Event.create({
+                cameraName: req.body.cameraName,
+                cameraLocation: req.body.cameraLocation,
+                date: req.body.date,
+                video: req.files['video'][0].filename,
+                previewImage: req.files['previewImage'][0].filename
+            },
+            function (err) {
+                if (err) {
+                    res.send(err);
+                }
+                res.sendStatus(200);
+            });
+    } else {
+        res.sendStatus(400);
+    }
 };
 
 exports.get = function(req, res) {
