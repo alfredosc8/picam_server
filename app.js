@@ -8,6 +8,8 @@ var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 
 var db = require('./config/db');
+var schedule = require('./lib/util/schedule');
+
 var routes = require('./routes/index');
 
 var app = express();
@@ -61,5 +63,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
+schedule.scheduleDiskClean(1, 20);
 
 module.exports = app;
