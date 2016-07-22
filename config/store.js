@@ -1,7 +1,7 @@
 var path = require('path');
 var multer = require('multer');
 
-let uploadDir = path.join(__dirname, '../public/uploads');
+var uploadDir = path.join(__dirname, '../public/uploads');
 
 var storage =   multer.diskStorage({
   destination: function (req, file, callback) {
