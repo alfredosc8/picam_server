@@ -38,7 +38,10 @@ class Handler(FileSystemEventHandler):
                             'previewImage': ('filename', open(preview_image_path, 'rb')),
                             }
                     )
-                    r = requests.post(Handler.server, data=m, headers={'Content-Type': m.content_type})
+                    try:
+                        r = requests.post(Handler.server, data=m, headers={'Content-Type': m.content_type})
+                    except requests.exceptions.ConnectionError as e:
+                        print e
 
 class Watcher():
     def __init__(self, watch_dir, server, camera_name, camera_location):
