@@ -1,5 +1,6 @@
 var Event = require('../models/event');
 var Moment = require('moment');
+var eventFileUtils = require('../lib/util/eventFileUtils');
 
 exports.list = function(req, res) {
     if (req.query.day) {
@@ -45,16 +46,44 @@ exports.get = function(req, res) {
     });
 };
 
-exports.delete = function(req, res) {
-    var query = ('all' === req.params.event_id) ? {} : {_id: req.params.event_id};
+exports.removeOldest = function(cb) {
+        Event.findOne({}, null, {sort: {date: 1}}, function (err, event) {
+            if (err) {
+                cb(err, null);
+            }
+            if (event) {
+                event.remove();
+                eventFileUtils.deleteEventFiles(event);
+            }
+            cb(null, event);
+        });
+};
 
-    Event.remove(query, function (err) {
-        if (err) {
-            res.send(err);
-        } else {
-            res.sendStatus(200);
-        }
-    });
+exports.delete = function(req, res) {
+    if ('all' === req.params.event_id) {
+        Event.remove({}, function (err) {
+            if (err) {
+                res.send(err);
+            } else {
+                eventFileUtils.deleteAllEventFiles();
+                res.sendStatus(200);
+            }
+        });
+    } else {
+        Event.findOne({_id: req.params.event_id}, function (err, event) {
+            if (err) {
+                res.send(err);
+            } else {
+                if (event) {
+                    event.remove();
+                    eventFileUtils.deleteEventFiles(event);
+                    res.sendStatus(200);
+                } else {
+                    res.sendStatus(400);
+                }
+            }
+        });
+    }
 };
 
 function returnLatestEventList(res) {

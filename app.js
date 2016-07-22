@@ -63,6 +63,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
-schedule.scheduleDiskClean(1, 20);
+schedule.scheduleDiskClean(1, 25);
 
 module.exports = app;

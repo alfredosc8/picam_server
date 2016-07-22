@@ -1,9 +1,11 @@
 var path = require('path');
 var multer = require('multer');
 
+let uploadDir = path.join(__dirname, '../public/uploads');
+
 var storage =   multer.diskStorage({
   destination: function (req, file, callback) {
-    callback(null, path.join(__dirname, '../public/uploads'));
+    callback(null, uploadDir);
   },
   filename: function (req, file, callback) {
     var ext = file.fieldname === 'previewImage' ? '.jpg' : '.mp4';
@@ -14,5 +16,6 @@ var storage =   multer.diskStorage({
 var upload = multer({ storage : storage }).fields([{ name: 'previewImage', maxCount: 1 }, { name: 'video', maxCount: 1 }]);
 
 module.exports = {
-    videoUpload: upload
+    videoUpload: upload,
+    path: uploadDir
 };

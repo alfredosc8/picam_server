@@ -25,7 +25,8 @@
     "jquery": "~3.0.0",
     "multer": "~1.1.0",
     "node-schedule": "~1.1.1",
-    "diskusage": "0.1.5"
+    "diskusage": "~0.1.5",
+    "glob": "~7.0.5"
   },
   "devDependencies": {
     "babel-core": "~6.9.1",
