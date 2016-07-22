@@ -1,0 +1,13 @@
+[Unit]
+Description=Camera video uploader
+After=multi-user.target
+
+[Service]
+Restart=always
+Type=idle
+ExecStart=/usr/bin/python /opt/watcher/watcher.py --server http://10.0.0.26:3000/api/events --watch_dir /var/www/camera/media/ --camera_location=bedroom --camera_name=bed
+User=user
+Group=user
+
+[Install]
+WantedBy=multi-user.target
