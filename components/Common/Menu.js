@@ -18,6 +18,9 @@ var Menu = React.createClass({
                         <li><i className="glyphicon glyphicon-map-marker"/>Front Door</li>
                     </ul>
                 </div>
+                <div className="row">
+                    <h3><a href="/oauth2/sign_in">Sign Out</a></h3>
+                </div>
             </div>
         );
     }
